@@ -7,6 +7,7 @@ import Footer from '../components/footer/contact.jsx';
 import { Link } from 'react-router-dom';
 
 const MainPage = () => {
+  const sectionClassNames = ['section1', 'section2', 'section3'];
   const [loadedImage, setLoadedImage] = useState(null);
   const [slideIn, setSlideIn] = useState(false);
   const [isInView, setIsInView] = useState(false);
@@ -82,11 +83,11 @@ const MainPage = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar sectionClassNames={sectionClassNames}/>
       <div className="page flex flex-col min-h-screen">
         <section
           ref={section1Ref}
-          className="h-screen bg-white flex items-center justify-center"
+          className="section1 h-screen bg-white flex items-center justify-center"
         >
           <div className="text-center p-32">
             <h1 className="text-black text-4xl font-bold mb-4">
@@ -113,7 +114,7 @@ const MainPage = () => {
         </section>
         <section
           ref={section2Ref}
-          className={`bg-slate-300 relative min-h-screen my-5 transition-opacity duration-1000 ${
+          className={`section2 bg-slate-300 relative min-h-screen my-5 transition-opacity duration-1000 ${
             isInView ? 'opacity-100' : 'opacity-0'
           }`}
         >
@@ -275,8 +276,7 @@ const MainPage = () => {
           </div>
         </section>
         
-        <section className='footer flex-col min-h-screen flex-grow overflow-hidden mb-0 pb-0'>
-        
+        <section className='section3 footer flex-col min-h-screen flex-grow overflow-hidden mb-0 pb-0'>
       <div className='pt-40 '>
         <Footer />
       </div>
