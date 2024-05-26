@@ -1,0 +1,52 @@
+/* Navbar.css */
+
+.menu-icon {
+    padding: 20px;
+    cursor: pointer;
+  }
+  
+  .nav-icon {
+    background-color: #000;
+    display: block;
+    height: 2px;
+    width: 18px;
+    position: relative;
+    transition: background .2s ease-out;
+  }
+  
+  .nav-icon:before {
+    background-color: #000;
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 5px;
+    transition: all .2s ease-out;
+  }
+  
+  .nav-icon:after {
+    background-color: #000;
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: -5px;
+    transition: all .2s ease-out;
+  }
+  
+  .menu-btn:checked ~ .menu-icon .nav-icon {
+    background-color: transparent;
+  }
+  
+  .menu-btn:checked ~ .menu-icon .nav-icon:before {
+    transform: rotate(-45deg);
+    top: 0px;
+  }
+  
+  .menu-btn:checked ~ .menu-icon .nav-icon:after {
+    transform: rotate(45deg);
+    top: 0px;
+  }
+  
