@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white bg-opacity-80 text-offwhite p-4 fixed w-full z-10 top-0">
+    <nav className="bg-white bg-opacity-80 text-offwhite p-4 fixed w-full z-2000 top-0">
       <div className="flex justify-between items-center w-full px-4">
         
         {isSmallScreen ? (
