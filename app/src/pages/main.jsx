@@ -12,26 +12,24 @@ const MainPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const [slideIn, setSlideIn] = useState(false);
-  const section1Ref = useRef(null); // Reference for the first section
-  const section2Ref = useRef(null); // Reference for the second section
+  const section1Ref = useRef(null);
+  const section2Ref = useRef(null); 
 
   useEffect(() => {
-    // Set the slide-in effect after a short delay
     setTimeout(() => setSlideIn(true), 100);
 
-    // Clean up the URL object when the component unmounts
     return () => {
       URL.revokeObjectURL(loadedImage);
     };
   }, [loadedImage]);
 
   useEffect(() => {
-    // Fetch the image 'img2' when the component mounts
+    
     const fetchImage = async () => {
       try {
-        const response = await fetch(img2); // Use imported image variable
+        const response = await fetch(img2); 
         const blob = await response.blob();
-        setLoadedImage(URL.createObjectURL(blob)); // Set the loaded image to state
+        setLoadedImage(URL.createObjectURL(blob)); 
       } catch (error) {
         console.error('Error fetching image:', error);
       }
@@ -51,7 +49,7 @@ const MainPage = () => {
           setIsVisible(false);
         }
       },
-      { threshold: 0.1 } // Adjust the threshold as needed
+      { threshold: 0.1 } 
     );
 
     if (section1Ref.current) {
@@ -70,7 +68,7 @@ const MainPage = () => {
       ([entry]) => {
         setIsInView(entry.isIntersecting);
       },
-      { threshold: 0.1 } // Adjust the threshold as needed
+      { threshold: 0.1 } 
     );
 
     if (section2Ref.current) {
@@ -126,7 +124,7 @@ const MainPage = () => {
               <h2 className="text-white text-3xl font-bold">Subjects</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Link to="./maths.jsx" className="subject-link">
+            <Link to="./maths" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
@@ -136,7 +134,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">Maths</h3>
                 </div>
               </Link>
-              <Link to="/physics.jsx" className="subject-link">
+              <Link to="/physics" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
@@ -146,7 +144,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">Physics</h3>
                 </div>
               </Link>
-              <Link to="/chemistry.jsx" className="subject-link">
+              <Link to="/chemistry" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
@@ -156,7 +154,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">Chemistry</h3>
                 </div>
               </Link>
-              <Link to="/civil.jsx" className="subject-link">
+              <Link to="/civil" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
@@ -166,7 +164,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">Civil</h3>
                 </div>
               </Link>
-              <Link to="/mech.jsx" className="subject-link">
+              <Link to="/mech" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
@@ -176,7 +174,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">Mechanical</h3>
                 </div>
               </Link>
-              <Link to="/be.jsx" className="subject-link">
+              <Link to="/be" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
@@ -186,7 +184,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">Basic Electronics</h3>
                 </div>
               </Link>
-              <Link to="/bee.jsx" className="subject-link">
+              <Link to="/bee" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
@@ -196,7 +194,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">Basic Electricals</h3>
                 </div>
               </Link>
-              <Link to="/cpp.jsx" className="subject-link">
+              <Link to="/cpp" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
@@ -206,7 +204,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">CPP</h3>
                 </div>
               </Link>
-              <Link to="/ld.jsx" className="subject-link">
+              <Link to="/ld" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
@@ -216,7 +214,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">Logic Design</h3>
                 </div>
               </Link>
-              <Link to="/coi.jsx" className="subject-link">
+              <Link to="/coi" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
@@ -226,7 +224,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">COI</h3>
                 </div>
               </Link>
-              <Link to="/eng.jsx" className="subject-link">
+              <Link to="/eng" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
@@ -236,7 +234,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">Technical English</h3>
                 </div>
               </Link>
-              <Link to="/bio.jsx" className="subject-link">
+              <Link to="/bio" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
@@ -246,7 +244,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">Biology</h3>
                 </div>
               </Link>
-              <Link to="/python.jsx" className="subject-link">
+              <Link to="/python" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
@@ -256,7 +254,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">Python</h3>
                 </div>
               </Link>
-              <Link to="/evs.jsx" className="subject-link">
+              <Link to="/evs" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}
