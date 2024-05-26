@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/navbar/Navbar';
 import img2 from '../images/img2.png'; // Import the image
 import img1 from '../images/img1.png'; // Import the image
+import './mainpage.css'; // Import the CSS file for animations
 
 const MainPage = () => {
-  const [loadedImage, setLoadedImage] = useState(null); // State for the loaded image
-  const [slideIn, setSlideIn] = useState(false); // State for the slide-in effect
+  const [loadedImage, setLoadedImage] = useState(null); 
+  const [slideIn, setSlideIn] = useState(false); 
+  const [isInView, setIsInView] = useState(false); 
+
+  const sectionRef = useRef(null); // Reference for the section
 
   useEffect(() => {
     // Set the slide-in effect after a short delay
@@ -32,6 +36,25 @@ const MainPage = () => {
     fetchImage();
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 } // Adjust the threshold as needed
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, [sectionRef]);
+
   return (
     <div>
       <Navbar />
@@ -41,7 +64,7 @@ const MainPage = () => {
             <h1 className="text-black text-4xl font-bold mb-4">Gain easy access to question papers</h1>
             <p className="text-gray-700">This website provides access to question papers to help with the preparation of exams.</p>
           </div>
-          <div className={`h-screen bg-opacity-75 flex items-center justify-center m-4 transition-transform duration-500 ${slideIn ? 'transform translate-x-0' : 'transform translate-x-full'}`}>
+          <div className={`h-screen bg-opacity-75 flex items-center justify-center m-4 transition duration-700 ease-in-out ${slideIn ? 'transform translate-x-0' : 'transform translate-x-full'}`}>
             {loadedImage && (
               <img
                 src={loadedImage}
@@ -51,11 +74,10 @@ const MainPage = () => {
             )}
           </div>
         </section>
-        <section className="bg-slate-300 relative min-h-screen my-5">
-          <div className="relative z-10 pl-32 mr-0 ">
+        <section className={`bg-slate-300 relative min-h-screen my-5 transition-opacity duration-1000 ${isInView ? 'opacity-100' : 'opacity-0'}`} ref={sectionRef}>
+          <div className="relative z-10 pl-32 mr-0">
             <div className="text-center mb-8">
               <h2 className="text-white text-3xl font-bold">Subjects</h2>
-              
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="subject-card bg-white p-4 rounded shadow">
