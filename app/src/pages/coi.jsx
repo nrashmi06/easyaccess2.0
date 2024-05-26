@@ -8,25 +8,17 @@ const COIPage = () => {
       <h1>COI</h1>
       <div className="subject-grid">
         <div className="subject-card">
-          <h2>MSE Paper</h2>
-          <p>Mid-Semester Examination Papers for COI.</p>
-          <Link to="/path-to-mse-paper-coi.pdf" target="_blank">
-            Download MSE Paper
-          </Link>
-        </div>
-        <div className="subject-card">
-          <h2>SEE Paper</h2>
-          <p>Semester End Examination Papers for COI.</p>
-          <Link to="/path-to-see-paper-coi.pdf" target="_blank">
-            Download SEE Paper
-          </Link>
-        </div>
-        <div className="subject-card">
           <h2>MCQ</h2>
           <p>Multiple Choice Questions for COI.</p>
-          <Link to="/path-to-mcq-coi.pdf" target="_blank">
-            Download MCQ
-          </Link>
+          <Link to="/qp/COI/MCQ/UNIT%20I%20-%20QUESTION%20BANK.pdf" target="_blank">
+            Download MCQ Unit 1
+          </Link><br />
+          <Link to="/qp/COI/MCQ/UNIT%20II%20-%20QUESTION%20BANK.pdf" target="_blank">
+            Download MCQ Unit 2
+          </Link><br />
+          <Link to="/qp/COI/MCQ/Unit%203%20MCQ.pdf" target="_blank">
+            Download MCQ Unit 3
+          </Link><br />
         </div>
       </div>
     </div>

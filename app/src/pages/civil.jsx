@@ -10,21 +10,48 @@ const CivilPage = () => {
         <div className="subject-card">
           <h2>MSE Paper</h2>
           <p>Mid-Semester Examination Papers for Civil.</p>
-          <Link to="/path-to-mse-paper-civil.pdf" target="_blank">
-            Download MSE Paper
-          </Link>
+          <Link to="/qp/CIVIL/MSE/CIVIL%20MSE%202015.pdf" target="_blank">
+            Download MSE Paper 2015
+          </Link><br />
+          <Link to="/qp/CIVIL/MSE/CIVIL%20MSE%202016.pdf" target="_blank">
+            Download MSE Paper 2016
+          </Link><br />
+          <Link to="/qp/CIVIL/MSE/CIVIL%20MSE%202017.pdf" target="_blank">
+            Download MSE Paper 2017
+          </Link><br />
+          <Link to="/qp/CIVIL/MSE/CIVIL%20MSE%202022.pdf" target="_blank">
+            Download MSE Paper 2022
+          </Link><br />
         </div>
         <div className="subject-card">
           <h2>SEE Paper</h2>
           <p>Semester End Examination Papers for Civil.</p>
-          <Link to="/path-to-see-paper-civil.pdf" target="_blank">
-            Download SEE Paper
-          </Link>
+          <Link to="/qp/CIVIL/SEE/CV%20SEE%202015.pdf" target="_blank">
+            Download SEE Paper 2015
+          </Link><br />
+          <Link to="/qp/CIVIL/SEE/CV%20SEE%202016.pdf" target="_blank">
+            Download SEE Paper 2016
+          </Link><br />
+          <Link to="/qp/CIVIL/SEE/CV%20SEE%202017.pdf" target="_blank">
+            Download SEE Paper 2017
+          </Link><br />
+          <Link to="/qp/CIVIL/SEE/CV%20SEE%202018.pdf" target="_blank">
+            Download SEE Paper 2018
+          </Link><br />
+          <Link to="/qp/CIVIL/SEE/CV%20SEE%202019.pdf" target="_blank">
+            Download SEE Paper 2019
+          </Link><br />
+          <Link to="/qp/CIVIL/SEE/CV%20SEE%202021.pdf" target="_blank">
+            Download SEE Paper 2021
+          </Link><br />
+          <Link to="/qp/CIVIL/SEE/CV%20SEE%202022.pdf" target="_blank">
+            Download SEE Paper 2022
+          </Link><br />
         </div>
         <div className="subject-card">
           <h2>MCQ</h2>
           <p>Multiple Choice Questions for Civil.</p>
-          <Link to="/path-to-mcq-civil.pdf" target="_blank">
+          <Link to="/qp/CIVIL/MCQ/CV%20MCQs-compressed.pdf" target="_blank">
             Download MCQ
           </Link>
         </div>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Navbar from '../components/navbar/Navbar.jsx';
+import Navbar from '../../src/components/navbar/Navbar.jsx';
 import img2 from '../images/img2.png'; // Import the image
 import img1 from '../images/img1.png'; // Import the image
 import './mainpage.css'; // Import the CSS file for animations
-import Footer from '../components/footer/contact.jsx';
+import Footer from '../../src/components/footer/contact.jsx';
 import { Link } from 'react-router-dom';
 
 const MainPage = () => {
@@ -144,7 +144,7 @@ const MainPage = () => {
                   <h3 className="text-xl font-bold">Physics</h3>
                 </div>
               </Link>
-              <Link to="/chemistry" className="subject-link">
+              <Link to="/chem" className="subject-link">
                 <div className="subject-card bg-white p-4 rounded shadow">
                 <img
                   src={img1}

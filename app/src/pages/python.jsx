@@ -10,22 +10,8 @@ const PythonPage = () => {
         <div className="subject-card">
           <h2>MSE Paper</h2>
           <p>Mid-Semester Examination Papers for Python.</p>
-          <Link to="/path-to-mse-paper-python.pdf" target="_blank">
-            Download MSE Paper
-          </Link>
-        </div>
-        <div className="subject-card">
-          <h2>SEE Paper</h2>
-          <p>Semester End Examination Papers for Python.</p>
-          <Link to="/path-to-see-paper-python.pdf" target="_blank">
-            Download SEE Paper
-          </Link>
-        </div>
-        <div className="subject-card">
-          <h2>MCQ</h2>
-          <p>Multiple Choice Questions for Python.</p>
-          <Link to="/path-to-mcq-python.pdf" target="_blank">
-            Download MCQ
+          <Link to="/qp/PYTHON/MSE/PYTHON%20MSE1%202022.pdf" target="_blank">
+            Download MSE Paper 2022
           </Link>
         </div>
       </div>

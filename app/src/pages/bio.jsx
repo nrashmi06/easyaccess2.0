@@ -8,25 +8,17 @@ const BiologyPage = () => {
       <h1>Biology</h1>
       <div className="subject-grid">
         <div className="subject-card">
-          <h2>MSE Paper</h2>
-          <p>Mid-Semester Examination Papers for Biology.</p>
-          <Link to="/path-to-mse-paper-biology.pdf" target="_blank">
-            Download MSE Paper
-          </Link>
-        </div>
-        <div className="subject-card">
-          <h2>SEE Paper</h2>
-          <p>Semester End Examination Papers for Biology.</p>
-          <Link to="/path-to-see-paper-biology.pdf" target="_blank">
-            Download SEE Paper
-          </Link>
-        </div>
-        <div className="subject-card">
           <h2>MCQ</h2>
           <p>Multiple Choice Questions for Biology.</p>
-          <Link to="/path-to-mcq-biology.pdf" target="_blank">
+          <Link to="/qp/BIOLOGY/UNIT%201-QUESTION%20BANK%20(Topic%201-5).pdf" target="_blank">
             Download MCQ
-          </Link>
+          </Link><br />
+          <Link to="/qp/BIOLOGY/UNIT%202-QUESTION%20BANK%20(Topic%206-10).pdf" target="_blank">
+            Download MCQ
+          </Link><br />
+          <Link to="/qp/BIOLOGY/UNIT%203-QUESTION%20BANK%20(Topic%2011-13).pdf" target="_blank">
+            Download MCQ
+          </Link><br />
         </div>
       </div>
     </div>
