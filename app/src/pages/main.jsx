@@ -83,9 +83,9 @@ const MainPage = () => {
   }, [section2Ref]);
 
   return (
-    <div>
+    <div className='non mb-0 pb-0'>
       <Navbar sectionClassNames={sectionClassNames} />
-      <div className="page flex flex-col min-h-screen">
+      <div className="page flex flex-col min-h-screen mb-0">
         <section
           ref={section1Ref}
           className="section1 h-screen bg-white flex items-center justify-center"
@@ -119,7 +119,7 @@ const MainPage = () => {
             isInView ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className="relative z-10 pl-20 mr-0">
+          <div className="relative z-10 p-20 mr-0">
             <div className="text-center mb-8">
               <h2 className="text-white text-3xl font-bold">Subjects</h2>
             </div>
@@ -268,7 +268,7 @@ const MainPage = () => {
             </div>
           </div>
           <div
-            className="absolute inset-0 transform rotate-3 opacity-1 overflow-visible z-0"
+            className="absolute inset-0 transform rotate-3 opacity-1 overflow-hidden z-0"
             style={{ perspective: '1000px' }}
           >
             <div className="absolute top-0 left-0 w-full h-full bg-slate-500 rotate-2 opacity-10"></div>
@@ -277,8 +277,8 @@ const MainPage = () => {
           </div>
         </section>
         
-        <section className='section3 footer flex-col min-h-screen flex-grow overflow-hidden mb-0 pb-0'>
-      <div className='pt-40 '>
+        <section className='section3 footer content-evenly flex-col h-full flex-grow overflow-y-clip bottom-0 mb-0 pb-0'>
+      <div className='pb-0 '>
         <Footer />
       </div>
     </section>
