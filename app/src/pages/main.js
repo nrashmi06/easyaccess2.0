@@ -16,7 +16,7 @@ const MainPage = () => {
             <div className="absolute top-0 left-0 w-full h-full bg-slate-800 opacity-85 transform rotate-6"></div>
           </div>
           <div className="h-screenbg-opacity-75 flex items-center justify-center">
-            <h1 className="text-white text-4xl">Section 2 - Black</h1>
+            
           </div>
         </section>
         <section className="h-screen bg-white flex items-center justify-center">
