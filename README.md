@@ -28,7 +28,7 @@ This is the version 2.0 of the Easy Access website project, which is designed fo
 
 ## Video Demo
 
-<iframe src="[https://player.vimeo.com/video/YOUR_VIDEO_ID](https://github.com/nrashmi06/easyaccess2.0/blob/main/react%20app.mp4)" width="560" height="315" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+<iframe src="[https://github.com/nrashmi06/easyaccess2.0/blob/main/react%20app.mp4]" width="560" height="315" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
 ## Contact
 
