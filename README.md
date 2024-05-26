@@ -28,7 +28,7 @@ This is the version 2.0 of the Easy Access website project, which is designed fo
 
 ## Video Demo
 
-[Watch Video Demo](https://github.com/nrashmi06/easyaccess2.0/blob/main/react%20app.mp4)
+[Watch Video Demo](react%20app.mp4)
 
 ## Contact
 
