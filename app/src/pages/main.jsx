@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom';
 const MainPage = () => {
   const sectionClassNames = ['section1', 'section2', 'section3'];
   const [loadedImage, setLoadedImage] = useState(null);
-  const [slideIn, setSlideIn] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [isInView, setIsInView] = useState(false);
-
+  const [slideIn, setSlideIn] = useState(false);
   const section1Ref = useRef(null); // Reference for the first section
   const section2Ref = useRef(null); // Reference for the second section
 
@@ -44,8 +44,11 @@ const MainPage = () => {
     const observer1 = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          setIsVisible(true);
           setSlideIn(false);
           setTimeout(() => setSlideIn(true), 100);
+        } else {
+          setIsVisible(false);
         }
       },
       { threshold: 0.1 } // Adjust the threshold as needed
@@ -83,7 +86,7 @@ const MainPage = () => {
 
   return (
     <div>
-      <Navbar sectionClassNames={sectionClassNames}/>
+      <Navbar sectionClassNames={sectionClassNames} />
       <div className="page flex flex-col min-h-screen">
         <section
           ref={section1Ref}
@@ -99,8 +102,8 @@ const MainPage = () => {
             </p>
           </div>
           <div
-            className={`h-screen bg-opacity-75 flex items-center justify-center m-4 transition duration-700 ease-in-out ${
-              slideIn ? 'transform translate-x-0' : 'transform translate-x-full'
+            className={`h-screen bg-opacity-75 flex items-center justify-center m-4 image-container ${
+              isVisible ? 'visible' : ''
             }`}
           >
             {loadedImage && (
