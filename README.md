@@ -20,12 +20,10 @@ This is the version 2.0 of the Easy Access website project, which is designed fo
    - [Python]
    - [EVS]
 
-2. **About Us**: This page provides information about the project and contributors.
-   
+2. **About Us**: This page provides information about the project purpose
 
-3. **Contact Us**: This page provides contact information.
+3.**Contact Us**: This page provides contact information.
    
-
 ## Video Demo
 
 [Watch the Video](https://github.com/nrashmi06/easyaccess2.0/blob/main/react%20app%20(1).mp4)
