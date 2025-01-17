@@ -1,288 +1,120 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Navbar from '../../src/components/navbar/Navbar.jsx';
-import img2 from '../images/img2.png'; // Import the image
-import img1 from '../images/img1.png'; // Import the image
-import './mainpage.css'; // Import the CSS file for animations
-import Footer from '../../src/components/footer/contact.jsx';
 import { Link } from 'react-router-dom';
+import Navbar from '../../src/components/navbar/Navbar.jsx';
+import Footer from '../../src/components/footer/contact.jsx';
 
 const MainPage = () => {
-  const sectionClassNames = ['section1', 'section2', 'section3'];
   const [loadedImage, setLoadedImage] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isInView, setIsInView] = useState(false);
-  const [slideIn, setSlideIn] = useState(false);
-  const section1Ref = useRef(null);
-  const section2Ref = useRef(null); 
+  const [activeSection, setActiveSection] = useState('hero');
+  const heroRef = useRef(null);
+  const subjectsRef = useRef(null);
+
+  const subjects = [
+    { path: '/maths', name: 'Mathematics', icon: '➗' },
+    { path: '/physics', name: 'Physics', icon: '⚡' },
+    { path: '/chem', name: 'Chemistry', icon: '🧪' },
+    { path: '/civil', name: 'Civil Engineering', icon: '🏗️' },
+    { path: '/mech', name: 'Mechanical', icon: '⚙️' },
+    { path: '/be', name: 'Basic Electronics', icon: '🔌' },
+    { path: '/bee', name: 'Basic Electricals', icon: '💡' },
+    { path: '/cpp', name: 'C++', icon: '💻' },
+    { path: '/ld', name: 'Logic Design', icon: '🔧' },
+    { path: '/coi', name: 'COI', icon: '📚' },
+    { path: '/eng', name: 'Technical English', icon: '📝' },
+    { path: '/bio', name: 'Biology', icon: '🧬' },
+    { path: '/python', name: 'Python', icon: '🐍' },
+    { path: '/evs', name: 'EVS', icon: '🌍' }
+  ];
 
   useEffect(() => {
-    setTimeout(() => setSlideIn(true), 100);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
 
-    return () => {
-      URL.revokeObjectURL(loadedImage);
-    };
-  }, [loadedImage]);
+    [heroRef, subjectsRef].forEach((ref) => {
+      if (ref.current) observer.observe(ref.current);
+    });
 
-  useEffect(() => {
-    
-    const fetchImage = async () => {
-      try {
-        const response = await fetch(img2); 
-        const blob = await response.blob();
-        setLoadedImage(URL.createObjectURL(blob)); 
-      } catch (error) {
-        console.error('Error fetching image:', error);
-      }
-    };
-
-    fetchImage();
+    return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const observer1 = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          setSlideIn(false);
-          setTimeout(() => setSlideIn(true), 100);
-        } else {
-          setIsVisible(false);
-        }
-      },
-      { threshold: 0.1 } 
-    );
-
-    if (section1Ref.current) {
-      observer1.observe(section1Ref.current);
-    }
-
-    return () => {
-      if (section1Ref.current) {
-        observer1.unobserve(section1Ref.current);
-      }
-    };
-  }, [section1Ref]);
-
-  useEffect(() => {
-    const observer2 = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
-      { threshold: 0.1 } 
-    );
-
-    if (section2Ref.current) {
-      observer2.observe(section2Ref.current);
-    }
-
-    return () => {
-      if (section2Ref.current) {
-        observer2.unobserve(section2Ref.current);
-      }
-    };
-  }, [section2Ref]);
-
   return (
-    <div className='non mb-0 pb-0'>
-      <Navbar sectionClassNames={sectionClassNames} />
-      <div className="page flex flex-col min-h-screen mb-0">
-        <section
-          ref={section1Ref}
-          className="section1 h-screen bg-white flex items-center justify-center"
-        >
-          <div className="text-center p-32">
-            <h1 className="text-black text-4xl font-bold mb-4">
-              Gain easy access to question papers
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <Navbar />
+      
+      {/* Hero Section */}
+      <section
+        id="hero"
+        ref={heroRef}
+        className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
+      >
+        <div className="max-w-7xl mx-auto py-12 flex flex-col lg:flex-row items-center gap-12">
+          <div className="flex-1 text-center lg:text-left space-y-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 animate-fade-in">
+              Access Question Papers
+              <span className="block text-blue-600">With Ease</span>
             </h1>
-            <p className="text-gray-700">
-              This website provides access to question papers to help with the
-              preparation of exams.
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0">
+              Prepare effectively for your exams with our comprehensive collection of previous question papers.
             </p>
+            <a
+              href="#subjects"
+              className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition-all transform hover:scale-105"
+            >
+              Explore Subjects
+            </a>
           </div>
-          <div
-            className={`h-screen bg-opacity-75 flex items-center justify-center m-4 image-container ${
-              isVisible ? 'visible' : ''
-            }`}
-          >
-            {loadedImage && (
-              <img
-                src={loadedImage}
-                alt="Image"
-                className="max-h-full max-w-full"
-              />
-            )}
-          </div>
-        </section>
-        <section
-          ref={section2Ref}
-          className={`section2 bg-slate-300 relative min-h-screen my-5 transition-opacity duration-1000 ${
-            isInView ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <div className="relative z-10 p-20 mr-0">
-            <div className="text-center mb-8">
-              <h2 className="text-white text-3xl font-bold">Subjects</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Link to="./maths" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">Maths</h3>
-                </div>
-              </Link>
-              <Link to="/physics" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">Physics</h3>
-                </div>
-              </Link>
-              <Link to="/chem" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">Chemistry</h3>
-                </div>
-              </Link>
-              <Link to="/civil" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">Civil</h3>
-                </div>
-              </Link>
-              <Link to="/mech" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">Mechanical</h3>
-                </div>
-              </Link>
-              <Link to="/be" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">Basic Electronics</h3>
-                </div>
-              </Link>
-              <Link to="/bee" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">Basic Electricals</h3>
-                </div>
-              </Link>
-              <Link to="/cpp" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">CPP</h3>
-                </div>
-              </Link>
-              <Link to="/ld" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">Logic Design</h3>
-                </div>
-              </Link>
-              <Link to="/coi" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">COI</h3>
-                </div>
-              </Link>
-              <Link to="/eng" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">Technical English</h3>
-                </div>
-              </Link>
-              <Link to="/bio" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">Biology</h3>
-                </div>
-              </Link>
-              <Link to="/python" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">Python</h3>
-                </div>
-              </Link>
-              <Link to="/evs" className="subject-link">
-                <div className="subject-card bg-white p-4 rounded shadow">
-                <img
-                  src={img1}
-                  alt="Subject Image"
-                  className="mb-4 w-full h-32 object-cover rounded"
-                />
-                  <h3 className="text-xl font-bold">EVS</h3>
-                </div>
-              </Link>
-              
+          <div className="flex-1 relative">
+            <div className="relative w-full h-96 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl shadow-2xl overflow-hidden">
+              <div className="absolute inset-0 bg-white/50 backdrop-blur-sm"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-6xl">📚</span>
+              </div>
             </div>
           </div>
-          <div
-            className="absolute inset-0 transform rotate-3 opacity-1 overflow-hidden z-0"
-            style={{ perspective: '1000px' }}
-          >
-            <div className="absolute top-0 left-0 w-full h-full bg-slate-500 rotate-2 opacity-10"></div>
-            <div className="absolute top-0 left-0 w-full h-full bg-slate-600 opacity-75 transform rotate-3"></div>
-            <div className="absolute top-0 left-0 w-full h-full bg-slate-800 opacity-85 transform rotate-6"></div>
+        </div>
+      </section>
+
+      {/* Subjects Section */}
+      <section
+        id="subjects"
+        ref={subjectsRef}
+        className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-gray-100"
+      >
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+            Browse by Subject
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {subjects.map((subject) => (
+              <Link
+                key={subject.path}
+                to={subject.path}
+                className="group"
+              >
+                <div className="h-full bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col items-center justify-center gap-4 transform hover:-translate-y-1">
+                  <span className="text-4xl">{subject.icon}</span>
+                  <h3 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    {subject.name}
+                  </h3>
+                  <span className="text-sm text-gray-500 group-hover:text-blue-500">
+                    View Papers →
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
-        </section>
-        
-        <section className='section3 footer content-evenly flex-col h-full flex-grow overflow-y-clip bottom-0 mb-0 pb-0'>
-      <div className='pb-0 '>
-        <Footer />
-      </div>
-    </section>
-      </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 };
