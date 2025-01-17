@@ -18,18 +18,6 @@ const MainPage = () => {
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
 
-  const Sun = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffe747" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-sun">
-      <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
-    </svg>
-  );
-  
-  const Moon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff700" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-moon">
-      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-    </svg>
-  );
-
   const subjects = [
     { path: '/maths', name: 'Mathematics', emoji: '➗', color: 'bg-blue-100 dark:bg-blue-900' },
     { path: '/physics', name: 'Physics', emoji: '⚡', color: 'bg-yellow-100 dark:bg-yellow-900' },
@@ -103,28 +91,30 @@ const MainPage = () => {
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
-      <Navbar sectionClassNames={sectionClassNames} />
-      
-      {/* Theme Toggle Button */}
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-        className="fixed top-4 right-4 p-3 rounded-full bg-gray-200 dark:bg-gray-700 z-50 transition-all duration-300 hover:scale-110 shadow-lg"
-        aria-label="Toggle theme"
-      >
-        {darkMode ? <Sun className="w-6 h-6 text-yellow-400" /> : <Moon className="w-6 h-6 text-gray-700" />}
-      </button>
+      {/* Fixed navbar */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700 shadow-lg">
+          <div className="container mx-auto">
+            <Navbar 
+              sectionClassNames={sectionClassNames}
+              darkMode={darkMode}
+              setDarkMode={setDarkMode}
+            />
+          </div>
+        </div>
+      </div>
 
       <div className="page flex flex-col min-h-screen">
         {/* Hero Section */}
         <section
           ref={section1Ref}
-          className="section1 min-h-screen relative overflow-hidden"
+          className="section1 min-h-screen relative overflow-hidden pt-16"
         >
           {/* Background gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 opacity-30"></div>
           
           {/* Content container */}
-          <div className="relative z-10 container mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-center gap-12">
+          <div className="relative z-10 container mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-center gap-12 py-20">
             <div className="flex-1 text-center md:text-left space-y-6 max-w-xl">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent animate-gradient">
                 Gain Easy Access to Question Papers
@@ -144,7 +134,6 @@ const MainPage = () => {
             
             <div className="flex-1 p-4">
               <div className="relative">
-                {/* Decorative elements */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-20 blur-xl animate-pulse"></div>
                 <img
                   src={img2}
@@ -181,7 +170,7 @@ const MainPage = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {subjects.map((subject, index) => (
+              {subjects.map((subject) => (
                 <Link 
                   key={subject.path} 
                   to={subject.path}
