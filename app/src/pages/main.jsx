@@ -4,7 +4,6 @@ import img2 from '../images/img2.png';
 import './mainpage.css';
 import Footer from '../../src/components/footer/contact.jsx';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 const MainPage = () => {
   const sectionClassNames = ['section1', 'section2', 'section3'];
